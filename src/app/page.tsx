@@ -4,6 +4,9 @@ import { client, urlFor } from "../lib/sanity";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+
+export const revalidate = 30 // revalidate the data every 30 seconds
+
 // fetching data
 async function getData() {
   const query = `
