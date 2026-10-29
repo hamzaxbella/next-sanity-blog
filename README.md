@@ -1,37 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next + Sanity Blog
 
-## Getting Started
+A content-managed blog with article pages, rich text, and light/dark themes.
 
-First, run the development server:
+## Overview
+
+The homepage queries Sanity content, and `/blog/[slug]` renders individual posts. Portable Text handles article content; next-themes supplies theme switching.
+
+Built with Next.js, React, TypeScript, Tailwind CSS, and Sanity.
+
+## Run locally
 
 ```bash
+git clone https://github.com/hamzaxbella/next-sanity-blog.git
+cd next-sanity-blog
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000> (or the address printed in the terminal).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Use the build script to generate production output.
 
-## Learn More
+## CMS setup
 
-To learn more about Next.js, take a look at the following resources:
+The frontend client is in `src/lib/sanity.ts`, and the studio is in `studio-zyllux-digital/`. Configure both for a Sanity project you control, add the corresponding schemas/content, and allow your frontend origin. Existing hardcoded project identifiers do not grant access to the original content.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+cd studio-zyllux-digital
+npm ci
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Code map
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# next-sanity-blog
+`src/app/` contains routes, `src/components/` contains UI, and `studio-zyllux-digital/schemaTypes/` defines editorial models. A populated, accessible CMS dataset is required for meaningful content; the repository is not a standalone content export.
